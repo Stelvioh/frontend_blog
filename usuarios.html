@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Usuários</title>
+    <link rel="stylesheet" href="styles-menu.css">
+    <link rel="stylesheet" href="styles-usuarios.css">
+</head>
+
+<body>
+    <!-- Menu lateral -->
+    <nav id="sidebar">
+        <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+        <div class="sidebar-content">
+            <a href="index.html">Início</a>
+            <a href="blog.html">Blog</a>
+            <a href="usuarios.html">Usuários</a> <!-- Ativo -->
+        </div>
+    </nav>
+
+    <div id="content">
+        <h1>Usuários</h1>
+        <table id="tabelaUsuarios">
+            <thead>
+                <tr>
+                    <th>ID do Usuário</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas serão adicionadas aqui pelo JS -->
+            </tbody>
+        </table>
+
+        <h2>Adicionar Novo Usuário</h2>
+        <form id="formularioAdicionarUsuario">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+            <br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <br><br>
+            <input type="submit" value="Adicionar Usuário">
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="menu.js"></script>
+    <script src="usuarios.js"></script>
+</body>
+
+</html>
