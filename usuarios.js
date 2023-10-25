@@ -1,6 +1,6 @@
 //usuarios.js
 
-const url_base = "http://127.0.0.1:5000";
+const url_base = "http://127.0.0.1:5000/usuario";
 
 async function buscarTodosOsUsuarios() {
     const resposta = await fetch(`${url_base}/`);
