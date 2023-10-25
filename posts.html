@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<div id="menuPlaceholder"></div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Posts</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Posts</h1>
+    <table id="tabelaPosts">
+        <thead>
+            <tr>
+                <th>ID do Post</th>
+                <th>Título</th>
+                <th>Conteúdo</th>
+                <th>Autor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- As linhas serão adicionadas aqui pelo JS -->
+        </tbody>
+    </table>
+
+    <h2>Adicionar Novo Post</h2>
+    <form id="formularioAdicionarPost">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" required>
+        <br><br>
+        <label for="conteudo">Conteúdo:</label>
+        <textarea id="conteudo" required></textarea>
+        <br><br>
+        <label for="user_id">ID do Autor:</label>
+        <input type="number" id="user_id" required>
+        <br><br>
+        <input type="submit" value="Adicionar Post">
+    </form>
+
+    <script src="menu.js"></script>
+    <script src="posts.js"></script>
+</body>
+</html>
