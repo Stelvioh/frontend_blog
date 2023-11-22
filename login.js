@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.token) {
         
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('user_id', data.user_id);
                 window.location.href = '/usuarios.html';  
             } else {
                 alert('Erro no login. Por favor, verifique suas credenciais.');

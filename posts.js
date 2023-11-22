@@ -32,26 +32,41 @@ async function buscarTodosOsPosts() {
 async function adicionarPost(evento) {
     evento.preventDefault();
 
-    const titulo = document.getElementById('titulo').value;
-    const conteudo = document.getElementById('conteudo').value;
-    const user_id = document.getElementById('user_id').value;
+    try {
+        const titulo = document.getElementById('titulo').value;
+        const conteudo = document.getElementById('conteudo').value;
+        const user_id = localStorage.getItem('user_id'); // Obtém o user_id do localStorage
 
-    const resposta = await fetch(`${url_base}/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ title: titulo, content: conteudo, user_id: user_id })
-    });
+        if (!user_id) {
+            throw new Error('User ID não encontrado. Por favor, faça o login novamente.');
+        }
 
-    if (resposta.status === 201) {
-        // Limpar o formulário e buscar todos os posts novamente para atualizar a tabela
-        document.getElementById('formularioAdicionarPost').reset();
-        buscarTodosOsPosts();
-    } else {
-        console.error('Falha ao adicionar post. Servidor respondeu com', resposta.status);
+        const resposta = await fetch(`${url_base}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ title: titulo, content: conteudo, user_id: user_id })
+        });
+
+        if (resposta.status === 201) {
+            // Limpar o formulário e buscar todos os posts novamente para atualizar a tabela
+            document.getElementById('formularioAdicionarPost').reset();
+            buscarTodosOsPosts();
+        } else {
+            throw new Error('Falha ao adicionar post. Servidor respondeu com status: ' + resposta.status);
+        }
+    } catch (erro) {
+        exibirMensagemErro(erro.message);
     }
 }
+
+function exibirMensagemErro(mensagem) {
+    const containerErro = document.getElementById('mensagemErro'); // Certifique-se de que esse elemento existe no HTML
+    containerErro.innerText = mensagem;
+    containerErro.style.display = 'block'; // Supondo que por padrão esteja escondido
+}
+
 
 async function editarPost(postID) {
     const titulo = prompt("Novo título:");
